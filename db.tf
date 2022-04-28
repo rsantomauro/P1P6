@@ -13,10 +13,10 @@ module "db" {
     db_name             = "p1p6-wp"
     username            = "${var.userMySQL}"
     port                = "3306"
-    depends_on = [
-      random_password.user_pass_MySQL
-    ]
-    password            = "${var.user_pass_MySQL}"
+#    depends_on = [
+#      random_password.user_pass_MySQL
+#    ]
+#    password            = "${var.user_pass_MySQL}"
     iam_database_authentication_enabled = true
 
     vpc_security_group_ids = [aws_security_group.P1P6-Interno.id]
