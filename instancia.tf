@@ -21,27 +21,45 @@ resource "aws_security_group" "P1P6-SG-WEB" {
     from_port = 22
     protocol = "-1"
     to_port = 22
+    ipv6_cidr_blocks = []
+    prefix_list_ids = []
+    security_groups = []
+    self = false
   }, {
     cidr_blocks = [ "0.0.0.0/0" ]
     description = "HTTP"
     from_port = 80
     protocol = "-1"
     to_port = 80
+    ipv6_cidr_blocks = []
+    prefix_list_ids = []
+    security_groups = []
+    self = false
   },{
   cidr_blocks = [ "0.0.0.0/0" ]
     description = "HTTPS"
     from_port = 443
     protocol = "-1"
-    to_port = 443}
+    to_port = 443
+    ipv6_cidr_blocks = []
+    prefix_list_ids = []
+    security_groups = []
+    self = false}
   ]
   egress = [ {
     cidr_blocks = [ "0.0.0.0/0" ]
     description = "P1P6"
     protocol = "-1"
+    ipv6_cidr_blocks = []
+    prefix_list_ids = []
+    security_groups = []
+    to_port = 0
+    from_port = 0
+    self = false
   } ]
 }
 
-resource "aws_security_group" "P1P6-SG-Interno" {
+resource "aws_security_group" "P1P6-Interno" {
   name = "P1P6-Interno"
   vpc_id = aws_vpc.P1P6.id
   ingress = [ {
@@ -50,22 +68,41 @@ resource "aws_security_group" "P1P6-SG-Interno" {
     from_port = 22
     protocol = "-1"
     to_port = 22
+    ipv6_cidr_blocks = []
+    prefix_list_ids = []
+    security_groups = []
+    self = false
   }, {
     cidr_blocks = [ "0.0.0.0/0" ]
     description = "HTTP"
     from_port = 8080
     protocol = "-1"
     to_port = 8080
+    ipv6_cidr_blocks = []
+    prefix_list_ids = []
+    security_groups = []
+    self = false
   },{
   cidr_blocks = [ "0.0.0.0/0" ]
     description = "HTTPS"
     from_port = 3306
     protocol = "-1"
-    to_port = 3306}
+    to_port = 3306
+    ipv6_cidr_blocks = []
+    prefix_list_ids = []
+    security_groups = []
+    self = false
+    }
   ]
   egress = [ {
     cidr_blocks = [ "0.0.0.0/0" ]
     description = "P1P6"
     protocol = "-1"
+    ipv6_cidr_blocks = []
+    prefix_list_ids = []
+    security_groups = []
+    to_port = 0
+    from_port = 0
+    self = false
   } ]
 }

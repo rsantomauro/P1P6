@@ -22,13 +22,12 @@ resource "aws_instance" "P1P6-NGINX2" {
   }
 }
 
-
 # Red interna
 resource "aws_instance" "P1P6-Wordpress" {
   ami           = "ami-03ededff12e34e59e"
   instance_type = "t2.micro"
   key_name      = "vockey"
-  vpc_security_group_ids = [aws_security_group.P1P6-Interno-SG.id]
+  vpc_security_group_ids = [aws_security_group.P1P6-Interno.id]
   tags = {
     Name      = "P1P6-Wordpress"
     terraform = "True"
