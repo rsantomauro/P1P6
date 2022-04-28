@@ -11,15 +11,17 @@ module "db" {
     allocated_storage   = 5
 
     db_name             = "p1p6-wp"
-    username            = "user"
+    username            = "${var.userMySQL}"
     port                = "3306"
-    create_random_password = "true"
-    random_password_length = 12
+    depends_on = [
+      random_password.user_pass_MySQL
+    ]
+    password            = "${var.user_pass_MySQL}"
     iam_database_authentication_enabled = true
 
     vpc_security_group_ids = [aws_security_group.P1P6-Interno.id]
     tags = {
-        Owner       = "user"
+        Owner       = "${var.userMySQL}"
         Environment = "dev"
     }
 }
